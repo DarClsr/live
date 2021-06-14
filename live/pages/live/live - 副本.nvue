@@ -1,0 +1,134 @@
+<template>
+	<view class="live page">
+		<view class="content ">
+			
+			<view class="play-view">
+				<video class="video" src="http://192.168.0.103:23481/live/VOkHdIrov13xIeGZKuRx.flv?sign=1623660024-3e6d8276576bd3095f13eaf4d5d24961" autoplay :controls="false"></video>
+			</view>
+			
+			<view class="top">
+				<view class="player">
+					<image class="avatar" width="50px" height="50upx" src="../../static/images/discover_live.png"></image>
+					<view class="player-text">
+						<text class="text">user01</text>
+						<text class="text">30人</text>
+					</view>
+					<uni-button class="thumb-up">
+						<text class="text">关注</text>
+					</uni-button>
+				</view>
+			</view>
+			
+			
+			<view class="bottom" :style="`width:${fullwidth}px`">
+				 <input class="bottom-input" type="text" placeholder="请输入内容" />
+				 <uni-button class="send">
+					 <text>send</text>
+				 </uni-button>
+			</view>
+
+			
+		</view>
+	</view>
+</template>
+
+<script>
+	import config from "@/config/config.js";
+	export default {
+		data() {
+			return {
+				pullUrl: config.pullUrl,
+				fullwidth:200,
+			}
+		},
+		onLoad() {
+			const info=uni.getSystemInfoSync();
+			this.fullwidth=info.screenWidth;
+			console.log(info)
+		},
+		methods: {
+
+		}
+	}
+</script>
+
+<style>
+	.live {
+		height: 100vh;
+		flex: 1;
+	}
+
+	.content {
+		padding: 0;
+		flex: 1;
+		background-color: #007AFF;
+	}
+
+	.play-view {
+		background-color: red;
+		flex: 1;
+	}
+
+	.top {
+		position: fixed;
+		top: 0;
+		width: 300upx;
+		padding: 15upx 0;
+		padding-left: 15px;
+	}
+	.player{
+		flex-direction: row;
+		align-items: center;
+		background-color: #18B566;
+		border-radius: 10upx;
+		padding:  8upx;
+	}
+	.avatar{
+		width: 50upx;
+		height: 50upx;
+		flex: 3;
+	}
+	.text{
+	 font-size: 10;	
+	 color: white;
+	}
+	.player-text{
+		flex: 9; 
+		padding-left: 10px;
+	}
+	.thumb-up{
+		width: 100upx;
+		height: 30upx;
+		font-size: 10;
+		flex: 3;
+		background-color: #007AFF;
+		justify-content: center;
+		align-items: center;
+		border-radius: 10upx;
+	}
+
+	.video {
+		flex: 1;
+	}
+	.bottom{
+		height: 100upx;
+		background-color: #C8C7CC;
+		position: fixed;
+		bottom: 0;
+		padding: 0 15upx;
+		align-items: center;
+		flex-direction: row;
+	}
+	.bottom-input{
+		flex: 4;
+		border: 1px solid #666;
+		font-size: 10;
+	}
+	.send{
+		flex: 1;
+		background-color: #19BE6B;
+		justify-content: center;
+		align-items: center;
+		margin-left: 10upx;
+	}
+</style>
